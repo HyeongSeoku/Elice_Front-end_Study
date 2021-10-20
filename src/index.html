@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Document</title>
   </head>
   <body>
@@ -26,16 +27,16 @@
               <i class="fas fa-search"></i>
             </button>
           </form>
-          <button><i class="fas fa-plus"></i></button>
+          <button id="create_btn"><i class="fas fa-plus"></i></button>
           <!--온 클릭시 폼 보이게 classList에 none추가 하도록-->
-          <form id="create_form">
+          <form id="create_form" class="vis_none">
             <input
               id="create_title_input"
               class="_input"
               placeholder="제목을 입력해주세요"
             />
             <textarea id="create_body_input" placeholder="내용"></textarea>
-            <button type="submit">확인</button>
+            <button type="submit" id="create_submit_btn">확인</button>
           </form>
         </div>
       </section>
