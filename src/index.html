@@ -11,17 +11,35 @@
       <h2>제목이 들어갈 부분</h2>
     </header>
     <main>
-      <section id="search_container">
+      <section id="command_container">
         <header>
           <h3>검색</h3>
         </header>
         <div>
           <form id="search_form">
-            <input id="search_input" class="_input" />
-            <button>검색</button>
+            <input
+              id="search_input"
+              class="_input"
+              placeholder="검색할 내용을 입력해주세요"
+            />
+            <button type="submit" id="search_btn">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+          <button><i class="fas fa-plus"></i></button>
+          <!--온 클릭시 폼 보이게 classList에 none추가 하도록-->
+          <form id="create_form">
+            <input
+              id="create_title_input"
+              class="_input"
+              placeholder="제목을 입력해주세요"
+            />
+            <textarea id="create_body_input" placeholder="내용"></textarea>
+            <button type="submit">확인</button>
           </form>
         </div>
       </section>
+      <div></div>
       <section id="list_container">
         <div>
           <ul class="list_ul">
@@ -32,8 +50,11 @@
       </section>
       <footer>
         <!--버튼 들어가야함-->
+        <div>버튼 들어갈 부분</div>
         <div>1</div>
       </footer>
     </main>
   </body>
+  <script src="index.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 </html>
