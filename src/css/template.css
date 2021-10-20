@@ -1,0 +1,31 @@
+#content_container {
+  width: 380px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  margin: 15px;
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+.content_id {
+  flex-grow: 1;
+}
+
+.content_title {
+  flex-grow: 3;
+}
+
+.content_body {
+  flex-grow: 4;
+}
+
+.date_container {
+  flex-grow: 1;
+}
+
+.content_btn_container {
+  flex-grow: 1;
+}
