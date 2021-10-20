@@ -19,11 +19,13 @@ const dataList = [
   },
 ];
 //선언부
+const search_form = document.querySelector("#search_form");
 const search_input = document.querySelector("#search_input");
-const search_bnt = document.querySelector("#search_btn");
+const search_btn = document.querySelector("#search_btn");
 
 const create_form = document.querySelector("#create_form");
 const create_btn = document.querySelector("#create_btn");
+const create_cancel_btn = document.querySelector("#create_cancel_btn");
 
 const list_ul = document.querySelector(".list_ul");
 
@@ -87,11 +89,23 @@ const serachData = () => {
 const showCreateForm = () => {
   //보이도록
   create_form.classList.remove("vis_none");
+  create_btn.classList.add("vis_none");
+  search_form.classList.add("vis_none");
   const create_submit_btn = document.querySelector("#create_submit_btn");
 
   create_submit_btn.addEventListener("click", (event) => {
     event.preventDefault();
     createData();
+    search_form.classList.remove("vis_none");
+    create_btn.classList.remove("vis_none");
+    create_form.classList.add("vis_none");
+  });
+  //취소 버튼
+  create_cancel_btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    search_form.classList.remove("vis_none");
+    create_btn.classList.remove("vis_none");
+    create_form.classList.add("vis_none");
   });
 };
 
