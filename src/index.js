@@ -43,13 +43,17 @@ const initList = () => {
 const topicTemplate = (data) => {
   return `
       <div id="content_container">
-        <span>${data.id}</span>
-        <div>${data.title}</div>
-        <div>${data.body}</div>
+        <span class="content_id">${data.id}</span>
+        <div class="content_title">${data.title}</div>
+        <div class="content_body">${data.body}</div>
         <div id="date_container">
           <span>${data.date.year}</span>
           <span>${data.date.month}</span>
           <span>${data.date.day}</span>
+        </div>
+        <div class="content_btn_container">
+          <button class="content_delete btn"><i class="fas fa-trash-alt"></i></button>
+          <button class="content_update btn"><i class="fas fa-pen"></i></button>
         </div>
       </div>
   `;
