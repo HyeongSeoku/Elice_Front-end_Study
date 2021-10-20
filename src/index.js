@@ -1,7 +1,22 @@
 const dataList = [
-  { id: 1, title: "첫번째 글", body: "첫 번째 글 내용" },
-  { id: 2, title: "두번째 글", body: "두 번째 글 내용" },
-  { id: 3, title: "첫", body: "첫 내용 Test" },
+  {
+    id: 1,
+    title: "첫번째 글",
+    body: "첫 번째 글 내용",
+    date: { year: 2021, month: 10, day: 15 },
+  },
+  {
+    id: 2,
+    title: "두번째 글",
+    body: "두 번째 글 내용",
+    date: { year: 2021, month: 10, day: 17 },
+  },
+  {
+    id: 3,
+    title: "첫",
+    body: "첫 내용 Test",
+    date: { year: 2021, month: 10, day: 19 },
+  },
 ];
 //선언부
 const search_input = document.querySelector("#search_input");
@@ -10,10 +25,35 @@ const search_bnt = document.querySelector("#search_btn");
 const create_form = document.querySelector("#create_form");
 const create_btn = document.querySelector("#create_btn");
 
+const list_ul = document.querySelector(".list_ul");
+
 //화면에 데이터 뿌려줌
-const 
+const initList = () => {
+  console.log("test");
+  list_ul.innerHTML = ""; //중복으로 데이터 뿌려지는것을 방지하기 위해 초기화
+  dataList.forEach((i, index) => {
+    const li = document.createElement("li");
+    li.setAttribute("key", i.id);
+    li.innerHTML = topicTemplate(i);
+    list_ul.appendChild(li);
+  });
+};
 
-
+//글 기본 템플릿
+const topicTemplate = (data) => {
+  return `
+      <div id="content_container">
+        <span>${data.id}</span>
+        <div>${data.title}</div>
+        <div>${data.body}</div>
+        <div id="date_container">
+          <span>${data.date.year}</span>
+          <span>${data.date.month}</span>
+          <span>${data.date.day}</span>
+        </div>
+      </div>
+  `;
+};
 
 //검색
 const serachData = () => {
@@ -52,6 +92,11 @@ const showCreateForm = () => {
 };
 
 const createData = () => {
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+
   //상단 선언부에서 선언시 오류남 (display="none")때문
   const create_title_input = document.querySelector("#create_title_input");
   const create_body_input = document.querySelector("#create_body_input");
@@ -62,11 +107,16 @@ const createData = () => {
     id: curIdx + 1,
     title: create_title_input.value,
     body: create_body_input.value,
+    date: { year, month, day },
   });
   console.log(dataList);
   //폼 다시 랜더링 되도록 함수 호출
+  initList();
 };
 
+window.onload = () => {
+  initList();
+};
 
 /*
 이벤트 adapter
