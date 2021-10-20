@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    <title>CRUD Study</title>
   </head>
   <body>
     <header>
@@ -13,21 +13,22 @@
     </header>
     <main>
       <section id="command_container">
-        <header>
-          <h3>검색</h3>
-        </header>
         <div>
-          <form id="search_form">
-            <input
-              id="search_input"
-              class="_input"
-              placeholder="검색할 내용을 입력해주세요"
-            />
-            <button type="submit" id="search_btn btn">
-              <i class="fas fa-search"></i>
+          <div class="command_container_oneline">
+            <form id="search_form">
+              <input
+                id="search_input"
+                class="_input"
+                placeholder="검색할 내용을 입력해주세요"
+              />
+              <button type="submit" id="search_btn" class="btn">
+                <i class="fas fa-search"></i>
+              </button>
+            </form>
+            <button id="create_btn" class="btn">
+              <i class="fas fa-plus"></i>
             </button>
-          </form>
-          <button id="create_btn btn"><i class="fas fa-plus"></i></button>
+          </div>
           <!--온 클릭시 폼 보이게 classList에 none추가 하도록-->
           <form id="create_form" class="vis_none">
             <input
@@ -36,7 +37,10 @@
               placeholder="제목을 입력해주세요"
             />
             <textarea id="create_body_input" placeholder="내용"></textarea>
-            <button type="submit" id="create_submit_btn btn">확인</button>
+            <button type="submit" id="create_submit_btn" class="btn">
+              확인
+            </button>
+            <button id="create_cancel_btn">취소</button>
           </form>
         </div>
       </section>
