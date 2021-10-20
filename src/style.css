@@ -1,0 +1,7 @@
+#create_form.vis_none {
+  display: none;
+}
+
+#create_form.vis_true {
+  display: block;
+}
