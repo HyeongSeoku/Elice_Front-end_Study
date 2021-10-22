@@ -15,19 +15,27 @@
 }
 
 .content_id {
+  font-size: 11px;
+  font-weight: 400;
   flex-grow: 1;
 }
 
 .content_title {
+  font-size: 14px;
   flex-grow: 3;
 }
 
 .content_body {
+  font-size: 17px;
   flex-grow: 4;
 }
 
-.date_container {
+#date_container {
   flex-grow: 1;
+}
+
+#date_container > span {
+  font-size: 10px;
 }
 
 .content_btn_container {

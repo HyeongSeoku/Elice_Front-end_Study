@@ -30,37 +30,58 @@ const create_cancel_btn = document.querySelector("#create_cancel_btn");
 
 const list_ul = document.querySelector(".list_ul");
 
-//화면에 데이터 뿌려줌
+//======화면에 데이터 뿌려줌=====
 const initList = () => {
-  console.log("test");
+  console.log("🚀 ~ file: index.js ~ line 36 ~ initList ~ dataList", dataList);
   list_ul.innerHTML = ""; //중복으로 데이터 뿌려지는것을 방지하기 위해 초기화
-  dataList.forEach((i, index) => {
-    const li = document.createElement("li");
-    li.setAttribute("key", i.id);
-    li.innerHTML = topicTemplate(i);
-    list_ul.appendChild(li);
-  });
 
-  const content_delete = document.querySelectorAll(".content_delete");
-  content_delete.forEach((i) => {
-    i.addEventListener("click", (event) => {
-      const delTargetId = Number(
-        event.currentTarget.parentNode.parentNode.parentNode.getAttribute("key")
-      );
-      console.log(
-        "🚀 ~ file: index.js ~ line 149 ~ i.addEventListener ~ key",
-        delTargetId
-      );
-      const newList = dataList.filter((item) => {
-        return item.id !== delTargetId;
-      });
-      dataList = newList;
-      initList();
+  //데이터가 없을 경우 처리
+  if (dataList.length === 0) {
+    list_ul.innerHTML = `<div id="data_empty">텅...</div>`;
+  } else {
+    dataList.forEach((i, index) => {
+      const li = document.createElement("li");
+      li.setAttribute("key", i.id);
+      li.innerHTML = topicTemplate(i);
+      list_ul.appendChild(li);
     });
-  });
+
+    //=====삭제 메소드========
+    const content_delete = document.querySelectorAll(".content_delete");
+    content_delete.forEach((i) => {
+      i.addEventListener("click", (event) => {
+        const delTargetId = Number(
+          event.currentTarget.parentNode.parentNode.parentNode.getAttribute(
+            "key"
+          )
+        );
+        const newList = dataList.filter((item) => {
+          return item.id !== delTargetId;
+        });
+        dataList = newList;
+        initList();
+      });
+    });
+
+    //=========수정 메소드=======
+    /*
+    const content_update = document.querySelectorAll(".content_update");
+    content_update.forEach((i)=>{
+      i.addEventListener("click",(event)=>{
+        const UpdateTargetId = Number(
+          event.currentTarget.parentNode.parentNode.parentNode.getAttribute(
+            "key"
+          )
+        );
+        
+
+      })
+    })
+    */
+  }
 };
 
-//글 기본 템플릿
+//=====글 기본 템플릿========
 const topicTemplate = (data) => {
   return `
       <div id="content_container">
@@ -80,7 +101,7 @@ const topicTemplate = (data) => {
   `;
 };
 
-//검색
+//======검색========
 const serachData = () => {
   const searchTarget = search_input.value; //검색어
   const searchResult = []; //검색한 결과 담을 배열
@@ -120,6 +141,7 @@ const showCreateForm = () => {
     search_form.classList.remove("vis_none");
     create_btn.classList.remove("vis_none");
     create_form.classList.add("vis_none");
+    return;
   });
   //취소 버튼
   create_cancel_btn.addEventListener("click", (e) => {
@@ -140,23 +162,25 @@ const createData = () => {
   //상단 선언부에서 선언시 오류남 (display="none")때문
   const create_title_input = document.querySelector("#create_title_input");
   const create_body_input = document.querySelector("#create_body_input");
-  const curIdx = dataList[dataList.length - 1].id;
-  console.log(curIdx);
 
-  dataList.push({
-    id: curIdx + 1,
-    title: create_title_input.value,
-    body: create_body_input.value,
-    date: { year, month, day },
-  });
+  //데이터가 없을경우 id 처리
+  const curIdx = dataList.length === 0 ? 0 : dataList[dataList.length - 1].id;
+  if (create_title_input.value !== "" && create_body_input !== "") {
+    dataList.push({
+      id: curIdx + 1,
+      title: create_title_input.value,
+      body: create_body_input.value,
+      date: { year, month, day },
+    });
+  } else {
+    alert("값을 입력해주세요.");
+  }
   //입력 폼 값 초기화
   create_title_input.value = "";
   create_body_input.value = "";
   //폼 다시 랜더링 되도록 함수 호출
   initList();
 };
-
-const deleteData = () => {};
 
 //동작시 가장 먼저 실행되야할 메소드 선언
 window.onload = () => {
@@ -173,7 +197,8 @@ search_btn.addEventListener("click", (event) => {
 });
 
 //생성 버튼
-create_btn.addEventListener("click", () => {
+create_btn.addEventListener("click", (event) => {
+  event.preventDefault();
   showCreateForm();
 });
 

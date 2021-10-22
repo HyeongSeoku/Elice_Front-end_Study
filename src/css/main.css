@@ -39,3 +39,12 @@
 #create_form.vis_none {
   display: none;
 }
+
+#data_empty {
+  width: 400px;
+  height: 200px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  justify-self: center;
+}
