@@ -8,9 +8,11 @@
     <title>CRUD Study</title>
   </head>
   <body>
-    <header>
-      <h2>제목이 들어갈 부분</h2>
-    </header>
+    <div class="header_container">
+      <header>
+        <h2>엘리스 게시판</h2>
+      </header>
+    </div>
     <main>
       <section id="command_container">
         <div>
@@ -30,18 +32,22 @@
             </button>
           </div>
           <!--온 클릭시 폼 보이게 classList에 none추가 하도록-->
-          <form id="create_form" class="vis_none">
-            <input
-              id="create_title_input"
-              class="_input"
-              placeholder="제목을 입력해주세요"
-            />
-            <textarea id="create_body_input" placeholder="내용"></textarea>
-            <button type="submit" id="create_submit_btn" class="btn">
-              확인
-            </button>
-            <button id="create_cancel_btn">취소</button>
-          </form>
+          <div class="create_form_container">
+            <form id="create_form" class="vis_none">
+              <input
+                id="create_title_input"
+                class="_input"
+                placeholder="제목을 입력해주세요"
+              />
+              <textarea id="create_body_input" placeholder="내용"></textarea>
+              <div class="create_btn_container">
+                <button type="submit" id="create_submit_btn" class="btn">
+                  확인
+                </button>
+                <button id="create_cancel_btn" class="btn">취소</button>
+              
+            </form>
+          </div>
         </div>
       </section>
       <div></div>
@@ -55,7 +61,7 @@
       </section>
       <footer>
         <!--버튼 들어가야함-->
-        <div>버튼 들어갈 부분</div>
+        <div>페이지 버튼 들어갈 부분</div>
         <div>1</div>
       </footer>
     </main>

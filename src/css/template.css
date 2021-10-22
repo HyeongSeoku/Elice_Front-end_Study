@@ -10,6 +10,10 @@
   border-radius: 5px;
 }
 
+#content_container:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 .content_id {
   flex-grow: 1;
 }

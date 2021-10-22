@@ -1,4 +1,4 @@
-const dataList = [
+let dataList = [
   {
     id: 1,
     title: "첫번째 글",
@@ -18,6 +18,7 @@ const dataList = [
     date: { year: 2021, month: 10, day: 19 },
   },
 ];
+let curDataList = dataList;
 //선언부
 const search_form = document.querySelector("#search_form");
 const search_input = document.querySelector("#search_input");
@@ -28,6 +29,8 @@ const create_btn = document.querySelector("#create_btn");
 const create_cancel_btn = document.querySelector("#create_cancel_btn");
 
 const list_ul = document.querySelector(".list_ul");
+
+//변화 감지 메소드
 
 //화면에 데이터 뿌려줌
 const initList = () => {
@@ -132,14 +135,33 @@ const createData = () => {
   initList();
 };
 
+const deleteData = () => {};
+
+//동작시 가장 먼저 실행되야할 메소드 선언
 window.onload = () => {
   initList();
+  const content_delete = document.querySelectorAll(".content_delete");
+  content_delete.forEach((i) => {
+    i.addEventListener("click", (event) => {
+      const delTargetId = Number(
+        event.currentTarget.parentNode.parentNode.parentNode.getAttribute("key")
+      );
+      console.log(
+        "🚀 ~ file: index.js ~ line 149 ~ i.addEventListener ~ key",
+        delTargetId
+      );
+      const newList = dataList.filter((item) => {
+        return item.id !== delTargetId;
+      });
+      dataList = newList;
+      initList();
+    });
+  });
 };
 
 /*
 이벤트 adapter
 */
-
 //검색 버튼
 search_btn.addEventListener("click", (event) => {
   event.preventDefault();
@@ -150,3 +172,7 @@ search_btn.addEventListener("click", (event) => {
 create_btn.addEventListener("click", () => {
   showCreateForm();
 });
+
+//삭제 버튼
+
+// content_delete가 랜더링 되기전에 querySelecotrAll로 불러오려해서 오류 발생 How to resolve..?
