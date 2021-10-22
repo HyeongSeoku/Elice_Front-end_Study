@@ -30,8 +30,6 @@ const create_cancel_btn = document.querySelector("#create_cancel_btn");
 
 const list_ul = document.querySelector(".list_ul");
 
-//변화 감지 메소드
-
 //화면에 데이터 뿌려줌
 const initList = () => {
   console.log("test");
@@ -106,7 +104,9 @@ const serachData = () => {
   search_input.value = "";
 };
 
-//생성
+//======생성=======
+
+//새 글 입력 폼 보이고 숨기는 메소드
 const showCreateForm = () => {
   //보이도록
   create_form.classList.remove("vis_none");
@@ -130,6 +130,7 @@ const showCreateForm = () => {
   });
 };
 
+//새 글 추가 메소드
 const createData = () => {
   const date = new Date();
   const year = date.getFullYear();
@@ -148,7 +149,9 @@ const createData = () => {
     body: create_body_input.value,
     date: { year, month, day },
   });
-  console.log(dataList);
+  //입력 폼 값 초기화
+  create_title_input.value = "";
+  create_body_input.value = "";
   //폼 다시 랜더링 되도록 함수 호출
   initList();
 };
