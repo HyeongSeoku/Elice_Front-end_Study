@@ -42,6 +42,24 @@ const initList = () => {
     li.innerHTML = topicTemplate(i);
     list_ul.appendChild(li);
   });
+
+  const content_delete = document.querySelectorAll(".content_delete");
+  content_delete.forEach((i) => {
+    i.addEventListener("click", (event) => {
+      const delTargetId = Number(
+        event.currentTarget.parentNode.parentNode.parentNode.getAttribute("key")
+      );
+      console.log(
+        "🚀 ~ file: index.js ~ line 149 ~ i.addEventListener ~ key",
+        delTargetId
+      );
+      const newList = dataList.filter((item) => {
+        return item.id !== delTargetId;
+      });
+      dataList = newList;
+      initList();
+    });
+  });
 };
 
 //글 기본 템플릿
@@ -140,23 +158,6 @@ const deleteData = () => {};
 //동작시 가장 먼저 실행되야할 메소드 선언
 window.onload = () => {
   initList();
-  const content_delete = document.querySelectorAll(".content_delete");
-  content_delete.forEach((i) => {
-    i.addEventListener("click", (event) => {
-      const delTargetId = Number(
-        event.currentTarget.parentNode.parentNode.parentNode.getAttribute("key")
-      );
-      console.log(
-        "🚀 ~ file: index.js ~ line 149 ~ i.addEventListener ~ key",
-        delTargetId
-      );
-      const newList = dataList.filter((item) => {
-        return item.id !== delTargetId;
-      });
-      dataList = newList;
-      initList();
-    });
-  });
 };
 
 /*
