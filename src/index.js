@@ -79,6 +79,44 @@ const initList = () => {
     });
 
     //=========수정 메소드=======
+    const content_update = document.querySelectorAll(".content_update");
+    content_update.forEach((i) => {
+      i.addEventListener("click", (event) => {
+        modal.classList.add("open");
+        modal_title.innerHTML = `<h3>수정<h3>`;
+        const updateTargetId = Number(
+          event.currentTarget.parentNode.parentNode.parentNode.getAttribute(
+            "key"
+          )
+        );
+        const updateTarget = dataList.findIndex((i) => i.id === updateTargetId);
+        console.log(
+          "🚀 ~ file: index.js ~ line 93 ~ i.addEventListener ~ updateTarget",
+          updateTarget
+        );
+        //수정 하려는 글의 타이틀 value로 할당
+        const prev_title = dataList[updateTarget].title;
+        const prev_body = dataList[updateTarget].body;
+        modal_update_title_input.value = prev_title;
+        modal_update_body_input.value = prev_body;
+
+        modal_update_form.addEventListener("submit", (ev) => {
+          ev.preventDefault();
+          const update_title = modal_update_title_input.value;
+          const update_body = modal_update_body_input.value;
+          //이전과 같을경우 변경 x 모달 종료
+          if (update_title === prev_title && update_body === prev_body) {
+            alert("변경사항이 없습니다.");
+            modal.classList.remove("open");
+          } else {
+            dataList[updateTarget].title = update_title;
+            dataList[updateTarget].body = update_body;
+          }
+          modal.classList.remove("open");
+          initList();
+        });
+      });
+    });
   }
 };
 
