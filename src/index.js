@@ -102,6 +102,7 @@ const initList = () => {
 
         modal_update_form.addEventListener("submit", (ev) => {
           ev.preventDefault();
+          const updateDate = getDate();
           const update_title = modal_update_title_input.value;
           const update_body = modal_update_body_input.value;
           //이전과 같을경우 변경 x 모달 종료
@@ -111,6 +112,11 @@ const initList = () => {
           } else {
             dataList[updateTarget].title = update_title;
             dataList[updateTarget].body = update_body;
+            dataList[updateTarget].date = {
+              year: updateDate.year,
+              month: updateDate.month,
+              day: updateDate.day,
+            };
           }
           modal.classList.remove("open");
           initList();
@@ -193,10 +199,7 @@ const showCreateForm = () => {
 
 //새 글 추가 메소드
 const createData = () => {
-  const date = new Date();
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
+  const createDate = getDate(); //날짜 받아옴
 
   //상단 선언부에서 선언시 오류남 (display="none")때문
   const create_title_input = document.querySelector("#create_title_input");
@@ -209,7 +212,11 @@ const createData = () => {
       id: curIdx + 1,
       title: create_title_input.value,
       body: create_body_input.value,
-      date: { year, month, day },
+      date: {
+        year: createDate.year,
+        month: createDate.month,
+        day: createDate.day,
+      },
     });
   } else {
     alert("값을 입력해주세요.");
@@ -219,6 +226,16 @@ const createData = () => {
   create_body_input.value = "";
   //폼 다시 랜더링 되도록 함수 호출
   initList();
+};
+
+//날짜 메소드
+const getDate = () => {
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+
+  return { year, month, day };
 };
 
 //동작시 가장 먼저 실행되야할 메소드 선언
