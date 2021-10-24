@@ -3,6 +3,7 @@
 @import "./css/title.css";
 @import "./css/main.css";
 @import "./css/template.css";
+@import "./css/modal.css";
 
 .vis_none {
   display: none;

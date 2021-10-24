@@ -19,16 +19,31 @@ let dataList = [
   },
 ];
 let curDataList = dataList;
-//선언부
+//======선언부=========
+
+//search
 const search_form = document.querySelector("#search_form");
 const search_input = document.querySelector("#search_input");
 const search_btn = document.querySelector("#search_btn");
 
+//create
 const create_form = document.querySelector("#create_form");
 const create_btn = document.querySelector("#create_btn");
 const create_cancel_btn = document.querySelector("#create_cancel_btn");
 
 const list_ul = document.querySelector(".list_ul");
+
+//modal
+const modal = document.querySelector(".modal");
+const modal_close = document.querySelector(".modal_close");
+const modal_title = document.querySelector(".modal_title");
+const modal_update_title_input = document.querySelector(
+  ".modal_update_title_input"
+);
+const modal_update_body_input = document.querySelector(
+  ".modal_update_body_input"
+);
+const modal_update_form = document.querySelector(".modal_update_form");
 
 //======화면에 데이터 뿌려줌=====
 const initList = () => {
@@ -64,20 +79,6 @@ const initList = () => {
     });
 
     //=========수정 메소드=======
-    /*
-    const content_update = document.querySelectorAll(".content_update");
-    content_update.forEach((i)=>{
-      i.addEventListener("click",(event)=>{
-        const UpdateTargetId = Number(
-          event.currentTarget.parentNode.parentNode.parentNode.getAttribute(
-            "key"
-          )
-        );
-        
-
-      })
-    })
-    */
   }
 };
 
@@ -204,4 +205,7 @@ create_btn.addEventListener("click", (event) => {
 
 //삭제 버튼
 
-// content_delete가 랜더링 되기전에 querySelecotrAll로 불러오려해서 오류 발생 How to resolve..?
+//modal event
+modal_close.addEventListener("click", () => {
+  modal.classList.remove("open");
+});

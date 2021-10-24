@@ -1,5 +1,8 @@
+html,
 body {
   font-family: "Ubuntu", sans-serif;
+}
+body {
   display: flex;
   flex-direction: column;
   align-items: center;
