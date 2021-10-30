@@ -4,21 +4,27 @@ import ToDo from "../components/ToDo";
 import { actionCreators } from "../store";
 
 const Home = ({ data, addData }) => {
-  const [text, setText] = useState("");
-  const onChange = (e) => {
-    setText(e.target.value);
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+  const onTitleChange = (e) => {
+    setTitle(e.target.value);
+  };
+  const onBodyChange = (e) => {
+    setBody(e.target.value);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    addData(text);
-    setText("");
+    addData({ title, body });
+    setTitle("");
+    setBody("");
   };
   return (
     <>
       <h2>Home</h2>
       <form onSubmit={onSubmit}>
-        <input type="text" value={text} onChange={onChange} />
+        <input type="text" value={title} onChange={onTitleChange} />
+        <input type="text" value={body} onChange={onBodyChange} />
         <button>ADD</button>
       </form>
       <ul>

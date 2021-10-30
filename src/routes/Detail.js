@@ -1,11 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 
-const Detail = ({ toDo }) => {
+const Detail = ({ data }) => {
   return (
     <>
-      <h1>{toDo?.text}</h1>
-      <h5>Created At: {toDo?.id}</h5>
+      <h1>{data?.title}</h1>
+      <h2>{data?.body}</h2>
+      <h5>Created At: {data?.id}</h5>
     </>
   );
 };
@@ -18,7 +19,7 @@ const mapStateToProps = (state, ownProps) => {
       params: { id },
     },
   } = ownProps;
-  return { toDo: state.find((toDo) => toDo.id === parseInt(id)) };
+  return { data: state.find((data) => data.id === parseInt(id)) };
 };
 
 export default connect(mapStateToProps)(Detail);
