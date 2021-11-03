@@ -13,13 +13,13 @@ const Detail = ({ data }) => {
 
 const mapStateToProps = (state, ownProps) => {
   //Route에서 component 속성을 설정해주지 않으면 오류남
-  console.log(ownProps);
+  //params 사용 하여 id 받아옴
   const {
     match: {
       params: { id },
     },
   } = ownProps;
-  return { data: state.find((data) => data.id === parseInt(id)) };
+  return { data: state.postData.find((data) => data.id === parseInt(id)) };
 };
 
 export default connect(mapStateToProps)(Detail);
