@@ -1,60 +1,20 @@
-import { createStore } from "redux";
+import { combineReducers, createStore } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import post_reducer from "./reducer/post";
+import * as postAction from "./action/postAction";
 
-const CREATE = "CREATE";
-const DELETE = "DELETE";
+const post_createData = postAction.post_createData;
+const post_deleteData = postAction.post_deleteData;
 
-const initialState = [
-  {
-    id: parseInt(Date.now()) + Math.floor(Math.random() * 10),
-    title: "첫번째 글",
-    body: "첫번째 글 본문",
-  },
-  {
-    id: parseInt(Date.now()) + Math.floor(Math.random() * 10),
-    title: "두번째 글",
-    body: "두번째 글 본문",
-  },
-];
-const createData = (text) => {
-  return {
-    type: CREATE,
-    title: text.title,
-    body: text.body,
-  };
-};
+//분리된 리듀서 연결
+const reducer = combineReducers({ postData: post_reducer });
 
-const deleteData = (id) => {
-  return {
-    type: DELETE,
-    id: parseInt(id),
-  };
-};
-
-const reducer = (state = initialState, action) => {
-  console.log("🚀 ~ file: store.js ~ line 25 ~ reducer ~ state", state);
-
-  switch (action.type) {
-    case CREATE:
-      return [
-        {
-          id: parseInt(Date.now()) + Math.floor(Math.random() * 10),
-          title: action.title,
-          body: action.body,
-        },
-        ...state,
-      ];
-    case DELETE:
-      return state.filter((data) => data.id !== action.id);
-    default:
-      return state;
-  }
-};
-
-const store = createStore(reducer);
+//composeWithDevTools() : 크롬에서 Redux extension 사용하기 위한 세팅
+const store = createStore(reducer, composeWithDevTools());
 
 export const actionCreators = {
-  createData,
-  deleteData,
+  post_createData,
+  post_deleteData,
 };
 
 export default store;

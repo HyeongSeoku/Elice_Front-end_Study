@@ -28,7 +28,7 @@ const post_reducer = (state = initialState, action) => {
         },
       ];
     case types.DELETE_POST:
-      return { state: state.filter((data) => data.id !== action.id) };
+      return state.filter((data) => data.id !== action.id);
     default:
       return state;
   }
