@@ -3,6 +3,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import post_reducer from "./reducer/post";
 import * as postAction from "./action/postAction";
 
+//post Action
 const post_createData = postAction.post_createData;
 const post_deleteData = postAction.post_deleteData;
 
