@@ -6,6 +6,7 @@ import * as postAction from "./action/postAction";
 //post Action
 const post_createData = postAction.post_createData;
 const post_deleteData = postAction.post_deleteData;
+const post_updateData = postAction.post_updateData;
 
 //분리된 리듀서 연결
 const reducer = combineReducers({ postData: post_reducer });
@@ -13,9 +14,11 @@ const reducer = combineReducers({ postData: post_reducer });
 //composeWithDevTools() : 크롬에서 Redux extension 사용하기 위한 세팅
 const store = createStore(reducer, composeWithDevTools());
 
+//actionCreators에서 action을 통합 관리
 export const actionCreators = {
   post_createData,
   post_deleteData,
+  post_updateData,
 };
 
 export default store;
