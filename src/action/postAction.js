@@ -15,4 +15,11 @@ const post_deleteData = (id) => {
   };
 };
 
-export { post_createData, post_deleteData };
+const post_updateData = (id) => {
+  return {
+    type: types.UPDATE_POST,
+    id: parseInt(id),
+  };
+};
+
+export { post_createData, post_deleteData, post_updateData };
