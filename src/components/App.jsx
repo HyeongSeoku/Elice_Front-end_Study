@@ -1,6 +1,6 @@
 import "../App.css";
 import Home from "../pages/Home";
-import Detail from "../routes/Detail";
+import Detail from "../pages/Detail";
 import Feed from "../pages/Feed";
 import Surf from "../pages/Surf";
 import Credit from "../pages/Credit";
