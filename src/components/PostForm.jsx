@@ -3,23 +3,36 @@ import { connect } from "react-redux";
 import styled from 'styled-components';
 import { actionCreators } from "../store";
 
-const FormContainer = styled.form `
+const FormContainer = styled.div`
+  border: 1px solid;
+  border-radius: 8px;
+  padding: 5px 10px;
+  background-color: #23AAF2;
+`
+
+const Form = styled.form `
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 `
 
 const Titleinput = styled.input`
-    width: 200px;
+    width: 400px;
+    border:1px solid ;
     border-radius: 8px;
     margin-bottom: 10px;
 `
 
 const Bodyinput = styled.textarea`
-    width: 200px;
+    width: 400px;
+    border:1px solid ;
+    border-radius: 8px;
     resize: none;
 `
 
 const FormBtn = styled.button`
+    margin-top: 10px;
     width: 200px;
     border-radius: 8px;
 `
@@ -44,10 +57,13 @@ const PostForm = ({addData}) => {
       };
 
     return (
-        <FormContainer onSubmit={onSubmit}>
-                <Titleinput value={title} placeholder="제목을 입력해주세요" onChange={onTitleChange}/>
-                <Bodyinput value={body} placeholder="내용을 입력하세요" onChange={onBodyChange}></Bodyinput> 
-                <FormBtn>ADD</FormBtn>
+      <FormContainer>
+        <div>새 글 입력</div>
+          <Form onSubmit={onSubmit}>
+                  <Titleinput value={title} placeholder="제목을 입력해주세요" onChange={onTitleChange}/>
+                  <Bodyinput value={body} placeholder="내용을 입력하세요" onChange={onBodyChange}></Bodyinput> 
+                  <FormBtn>ADD</FormBtn>
+          </Form>
         </FormContainer>
     )
 }
