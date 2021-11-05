@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+## 구현 사항
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- [ ]
+- [ ]
+- [ ]
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+### 파일 구조
 
-### `yarn start`
+```bash
+├── server
+├── src
+│    ├──── action       #액션을 관리하는 디렉토리
+│    │         ├───── ActionTypes.js    #액션을 상수화
+│    │         ├───── modalAction.js    #modal리듀서에 대한 액션 관리
+│    │         └───── postAction.js     #post리듀서에 대한 액션 관리
+│    ├──── apis
+│    │       └───── giphyApi.js
+│    ├──── compoenets
+│    │        ├───── App.jsx          #페이지를 라우트 해주도록 관리하는 App컴포넌트
+│    │        ├───── Header.jsx       #헤더 컴포넌트
+│    │        ├───── PostData.jsx     #게시글
+│    │        ├───── PostForm.jsx     #게시물 입력받는 폼
+│    │        └───── PostModal.jsx    #모달 컴포넌트
+│    ├──── pages
+│    │      ├───── Credit.jsx
+│    │      ├───── Detail.jsx
+│    │      ├───── Feed.jsx
+│    │      ├───── Home.jsx
+│    │      └───── Surf.jsx
+│    ├──── reducer
+│    │       ├───── modal.jsx
+│    │       └───── post.jsx
+│    └──── utils
+├── App.css
+├── index.css
+├── index.js
+└── store.js        #모든 상태를 관리할 store
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### ❓ Reducer 동작 구조
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+---
 
-### `yarn test`
+#### 이벤트 발생
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![KakaoTalk_20211105_185542433](https://user-images.githubusercontent.com/48541850/140492660-18d98c61-5dfd-48fe-8d6f-c8f601032a86.jpg)
 
-### `yarn build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Store.js
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## ![KakaoTalk_20211105_185542433_03](https://user-images.githubusercontent.com/48541850/140492852-8be8ec1c-4dad-4123-a89d-75696ff12bc2.jpg)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### postAction.js
 
-### `yarn eject`
+![KakaoTalk_20211105_185542433_04](https://user-images.githubusercontent.com/48541850/140492909-657e9ad4-dec9-44e3-abf1-70af2ad2f513.jpg)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+---
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### post.js
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![KakaoTalk_20211105_185542433_05](https://user-images.githubusercontent.com/48541850/140493004-97bda88b-7dff-4639-a6c3-98de3c9bfabf.jpg)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+---
 
-## Learn More
+#### 삭제 완료
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![KakaoTalk_20211105_185542433_06](https://user-images.githubusercontent.com/48541850/140493068-453c13eb-3131-43d9-a1be-12fcb02c1f9c.jpg)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+#### 요약
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![KakaoTalk_20211105_185542433_07](https://user-images.githubusercontent.com/48541850/140493122-8d67c6b2-644f-4bb7-a6a7-42d1aacd8721.jpg)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
