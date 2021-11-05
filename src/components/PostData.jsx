@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { actionCreators } from "../store";
@@ -7,7 +7,7 @@ import styled from "styled-components";
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: white;
-
+  
   &:focus,
   &:hover,
   &:visited,
@@ -30,7 +30,7 @@ const PostLi = styled.li`
 `
 
 const PostContainer = styled.div`
-    
+  visibility: ${props=>props.visiblity?'hidden':'block'};
 `
 
 const PostContents = styled.div`
@@ -46,6 +46,7 @@ const PostContents = styled.div`
 
 const PostDelete = styled.button`
   border-radius: 8px;
+  visibility: ${props=>props.visiblity?'hidden':'block'};
   &:hover{
     box-shadow: inset;
   }
@@ -53,54 +54,38 @@ const PostDelete = styled.button`
 
 const PostUpdate = styled.button`
   border-radius: 8px;
+  visibility: ${props=>props.visiblity?'hidden':'block'};
   &:hover{
     box-shadow: inset;
   }
 `
 
-const UpdateSubmitBtn = styled.button`
-  border-radius: 8px;
-  &:hover{
-    box-shadow: inset;
-  }
-  visibility: ${props=>props.visiblity?'block':'hidden'};
-`
-
-
-
-const PostData = ({ title, body, id, onDeleteBtnClick }) => {
-  const [toggle,setToggle] = useState(false);
-
-  const onToggleBtnClick =()=>{
-    setToggle(true);
-  }
-
-  const toggleClose = () =>{
-    setToggle(false)
-  }
+const PostData = ({ title, body, id, onDeleteBtnClick,onModalOpen }) => {
 
     return (
       <PostLi>
-        <StyledLink to={`/detail/${id}`}>
-          <PostContainer>
+        <PostContainer >
+          <StyledLink to={`/detail/${id}`} >
             <PostContents>{title}</PostContents>
             <PostContents>{body}</PostContents>
+          </StyledLink>
           </PostContainer>
-        </StyledLink>
         <PostDelete onClick={onDeleteBtnClick}>DELELE</PostDelete>
-        <PostUpdate onClick={onToggleBtnClick}>UPDATE</PostUpdate>
-        <UpdateSubmitBtn visiblity={toggle} onClick={onToggleBtnClick}>확인</UpdateSubmitBtn>
+        <PostUpdate onClick={onModalOpen}>UPDATE</PostUpdate>
       </PostLi>
     );
   };
   
   //store에 접근한 컴포넌트가 store의 상태를 바꾸기 위해 dispatch를 사용할수 있게 만들어줌
   const mapDispatchToProps = (dispatch, ownProps) => {
+    console.log(ownProps);
     return {
       onDeleteBtnClick: () => dispatch(actionCreators.post_deleteData(ownProps.id)),
-      onUpdateBtnClick: () => dispatch()
+      onModalOpen :() => dispatch(actionCreators.modal_open(true))
     };
   };
+
+  
 
 //(mapStateToProps,mapDispatchToProps) 
 //순서라서 앞에 null없이 mapDispatchToProps만 사용시 오류뜸 단, 반대의 경우는 문제없음

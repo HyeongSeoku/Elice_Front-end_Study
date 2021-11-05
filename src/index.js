@@ -7,6 +7,7 @@ import store from "./store";
 
 ReactDOM.render(
   <Provider store={store}>
+    {/* store에 접근할수 있도록 해주는 컴포넌트*/}
     <App />
   </Provider>,
   document.getElementById("root")

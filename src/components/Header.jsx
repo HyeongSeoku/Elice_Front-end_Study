@@ -53,7 +53,6 @@ const NavItem = styled.li`
 
 const Utilcontainer = styled.div`
     flex-grow: 1;
-
 `
 
 const Header = () =>{
