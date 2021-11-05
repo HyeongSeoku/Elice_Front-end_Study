@@ -85,7 +85,6 @@ const PostData = ({ title, body, id, onDeleteBtnClick,onModalOpen }) => {
     };
   };
 
-  
 
 //(mapStateToProps,mapDispatchToProps) 
 //순서라서 앞에 null없이 mapDispatchToProps만 사용시 오류뜸 단, 반대의 경우는 문제없음
