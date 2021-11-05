@@ -15,10 +15,12 @@ const post_deleteData = (id) => {
   };
 };
 
-const post_updateData = (id) => {
+const post_updateData = (id, text) => {
   return {
     type: types.UPDATE_POST,
     id: parseInt(id),
+    title: text.title,
+    body: text.body,
   };
 };
 
