@@ -15,20 +15,24 @@ const Dimmed = styled.div`
     opacity: 0.5;
 `;
 
+const ModalContainer=`
+    
+`
+
 const Viewer = styled.div`
     background: white;
     position: fixed;
-    height: auto;
+    height: 300px;
     z-index: 15;
-
     padding: 1rem;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    border-radius: 5px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 `;
 
-const PostModal = ({visibile, title ,body, onChange,onUpdate,onClose})=>{
+const PostModal = ({visibile, data,id, onChange,onUpdate,onClose})=>{
     //visible이 아닐 경우 아무것도 로드하지 않음
     if(!visibile) return null;
 
@@ -36,19 +40,27 @@ const PostModal = ({visibile, title ,body, onChange,onUpdate,onClose})=>{
         <div>
             <Dimmed onClick={onClose}/>
             <Viewer>
-                <input value={title}onChange={onChange}/>
-                <input value ={body} onChange={onChange} />
+                <h2>{data.id}</h2>
+                {/*onChange 함수 작성해야함 (두개)*/}
+                <input value={data?.title} onChange={onChange}/>
+                <input value={data?.body} onChange={onChange} />
                 <button onClick={onUpdate}>확인</button>
             </Viewer>
         </div>
     );
 }
 
-const mapDispatchToProps = (dispatch,ownProps) =>{
+const mapStateToProps  = (state,ownProps) =>{
+    console.log("Modal",state,ownProps)
+    return {data: state.postData.find((data) => data.id === parseInt(state.modal.id)) }
+}
 
+const mapDispatchToProps = (dispatch,ownProps) =>{
     return {
         onClose: () => dispatch(actionCreators.modal_close(false))
     }
 }
 
-export default connect(null,mapDispatchToProps) (PostModal)
+
+
+export default connect(mapStateToProps,mapDispatchToProps) (PostModal)
