@@ -32,6 +32,8 @@ export const actionCreators = {
   modal_close,
 };
 
+store.subscribe(() => console.log("상태변경:", store.getState()));
+
 export default store;
 
 //보통 store에서 초기 state와  state와 관련된 동작등을 작성
