@@ -4,6 +4,8 @@ import { createAction, createReducer } from "@reduxjs/toolkit";
 const createPost = createAction("CREATE_POST");
 const deletePost = createAction("DELETE_POST");
 const updatePost = createAction("UPDATE_POST");
+const changeTitle = createAction("TITLE_CHANGE");
+const changeBody = createAction("BODY_CHANGE");
 
 const initialState = [
   {
@@ -35,6 +37,15 @@ const post_reducer = createReducer(initialState, {
   [deletePost]: (state, action) =>
     state.filter((data) => data.id !== action.payload),
   // [updatePost]:(state,action) =>
+  [changeTitle]: (state, action) => state.title + action.payload,
+  [changeBody]: (state, action) => state.body + action.payload,
 });
 
-export { post_reducer, createPost, deletePost, updatePost };
+export {
+  post_reducer,
+  createPost,
+  deletePost,
+  changeTitle,
+  changeBody,
+  updatePost,
+};
