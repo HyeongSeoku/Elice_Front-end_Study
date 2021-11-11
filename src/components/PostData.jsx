@@ -78,9 +78,9 @@ const PostData = ({ title, body, id, onDeleteBtnClick,onModalOpen }) => {
   
   //store에 접근한 컴포넌트가 store의 상태를 바꾸기 위해 dispatch를 사용할수 있게 만들어줌
   const mapDispatchToProps = (dispatch, ownProps) => {
-    
+    console.log("PostData:",ownProps.id);
     return {
-      onDeleteBtnClick: () => dispatch(actionCreators.post_deleteData(ownProps.id)),
+      onDeleteBtnClick: () => dispatch(actionCreators.deletePost(ownProps.id)),
       onModalOpen :() => {
         dispatch(actionCreators.modal_open(true,ownProps.id))
       }

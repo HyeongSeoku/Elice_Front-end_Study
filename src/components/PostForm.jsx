@@ -71,7 +71,7 @@ const PostForm = ({addData}) => {
 const mapDispatchToProps = (dispatch) => {
     return {
       //text를 prop으로 가지는 fucntion , 실행시 dispatch (actionCreators.createData)  호출
-      addData: (text) => dispatch(actionCreators.post_createData(text)),
+      addData: (text) => dispatch(actionCreators.createPost(text)),
     };
   };
 
