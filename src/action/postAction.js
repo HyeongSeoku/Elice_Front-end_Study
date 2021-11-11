@@ -1,27 +1,7 @@
-import * as types from "../action/ActionTypes";
+import { createAction } from "@reduxjs/toolkit";
 
-const post_createData = (text) => {
-  return {
-    type: types.CREATE_POST,
-    title: text.title,
-    body: text.body,
-  };
-};
+const createPost = createAction("CREATE_POST");
+const deletePost = createAction("DELETE_POST");
+const updatePost = createAction("UPDATE_POST");
 
-const post_deleteData = (id) => {
-  return {
-    type: types.DELETE_POST,
-    id: parseInt(id),
-  };
-};
-
-const post_updateData = (id, text) => {
-  return {
-    type: types.UPDATE_POST,
-    id: parseInt(id),
-    title: text.title,
-    body: text.body,
-  };
-};
-
-export { post_createData, post_deleteData, post_updateData };
+export { createPost, deletePost, updatePost };

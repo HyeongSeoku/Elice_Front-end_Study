@@ -1,4 +1,5 @@
 import * as types from "../action/ActionTypes";
+import { createPost, deletePost, updatePost } from "../action/postAction";
 
 const initialState = [
   {
@@ -17,21 +18,24 @@ const initialState = [
 
 const post_reducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.CREATE_POST:
+    case createPost.type:
       return [
         ...state,
         {
           id: parseInt(Date.now()) + Math.floor(Math.random() * 10),
-          title: action.title,
-          body: action.body,
+          title: action.payload.title,
+          body: action.payload.body,
           img_url: "",
         },
       ];
-    case types.DELETE_POST:
-      return state.filter((data) => data.id !== action.id);
+    case deletePost.type:
+      return state.filter((data) => data.id !== action.payload);
     //수정 액션 (! complete)
-    case types.UPDATE_POST:
-      return [...state, state.filter((data) => data.id == action.id)];
+    case updatePost.type:
+      return [
+        ...state,
+        { id: action.id, title: action.title, body: action.body },
+      ];
     default:
       return state;
   }
