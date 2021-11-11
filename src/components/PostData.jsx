@@ -82,7 +82,7 @@ const PostData = ({ title, body, id, onDeleteBtnClick,onModalOpen }) => {
     return {
       onDeleteBtnClick: () => dispatch(actionCreators.deletePost(ownProps.id)),
       onModalOpen :() => {
-        dispatch(actionCreators.modal_open(true,ownProps.id))
+        dispatch(actionCreators.modalOpen({isOpen:true,id:ownProps.id}))
       }
     };
   };

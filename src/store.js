@@ -11,8 +11,8 @@ const deletePost = postAction.deletePost;
 const updatePost = postAction.updatePost;
 
 //modal Action
-const modal_open = modalAction.modal_open;
-const modal_close = modalAction.modal_close;
+const modalOpen = modalAction.modalOpen;
+const modalClose = modalAction.modalClose;
 
 //분리된 리듀서 연결
 const reducer = combineReducers({
@@ -28,8 +28,8 @@ export const actionCreators = {
   createPost,
   deletePost,
   updatePost,
-  modal_open,
-  modal_close,
+  modalOpen,
+  modalClose,
 };
 
 store.subscribe(() => console.log("상태변경:", store.getState()));
