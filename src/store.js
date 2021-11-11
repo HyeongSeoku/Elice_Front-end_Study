@@ -1,14 +1,13 @@
 import { combineReducers, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
-import post_reducer from "./reducer/post";
+import {
+  post_reducer,
+  createPost,
+  deletePost,
+  updatePost,
+} from "./reducer/post";
 import modal_reducer from "./reducer/modal";
-import * as postAction from "./action/postAction";
 import * as modalAction from "./action/modalAction";
-
-//post Action
-const createPost = postAction.createPost;
-const deletePost = postAction.deletePost;
-const updatePost = postAction.updatePost;
 
 //modal Action
 const modalOpen = modalAction.modalOpen;
