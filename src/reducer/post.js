@@ -1,4 +1,3 @@
-import * as types from "../action/ActionTypes";
 import { createPost, deletePost, updatePost } from "../action/postAction";
 
 const initialState = [
