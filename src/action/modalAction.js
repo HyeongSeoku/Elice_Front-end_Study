@@ -1,18 +1,6 @@
-import * as types from "../action/ActionTypes";
+import { createAction } from "@reduxjs/toolkit";
 
-const modal_open = (value, id) => {
-  return {
-    type: types.OPEN_MODAL,
-    isOpen: value,
-    id: id,
-  };
-};
+const modalOpen = createAction("OPEN_MODAL");
+const modalClose = createAction("CLOSE_MODAL");
 
-const modal_close = (value) => {
-  return {
-    type: types.CLOSE_MODAL,
-    isOpen: value,
-  };
-};
-
-export { modal_open, modal_close };
+export { modalOpen, modalClose };
