@@ -6,9 +6,9 @@ import * as postAction from "./action/postAction";
 import * as modalAction from "./action/modalAction";
 
 //post Action
-const post_createData = postAction.post_createData;
-const post_deleteData = postAction.post_deleteData;
-const post_updateData = postAction.post_updateData;
+const createPost = postAction.createPost;
+const deletePost = postAction.deletePost;
+const updatePost = postAction.updatePost;
 
 //modal Action
 const modal_open = modalAction.modal_open;
@@ -25,9 +25,9 @@ const store = createStore(reducer, composeWithDevTools());
 
 //actionCreators에서 action을 통합 관리
 export const actionCreators = {
-  post_createData,
-  post_deleteData,
-  post_updateData,
+  createPost,
+  deletePost,
+  updatePost,
   modal_open,
   modal_close,
 };
