@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components'; 
 import { actionCreators } from '../store';
@@ -34,7 +34,7 @@ const Viewer = styled.div`
 
 
 
-const PostModal = ({visibile, data,onUpdate,onClose})=>{
+const PostModal = ({visibile, data,onUpdate,onClose,onTitleChange,onBodyChange})=>{
 
     //visible이 아닐 경우 아무것도 로드하지 않음
     if(!visibile) return null;
@@ -45,8 +45,8 @@ const PostModal = ({visibile, data,onUpdate,onClose})=>{
             <Viewer>
                 <h2>{data.id}</h2>
                 {/*onChange 함수 작성해야함 (두개)*/}
-                <input value={data.title} />
-                <input value={data.body} />
+                <input value={data.title} onChange={(e)=>{onTitleChange(e.target.value)}}/>
+                <input value={data.body} onChange={(e)=>{onBodyChange(e.target.value)}} />
                 <button onClick={onUpdate}>확인</button>
             </Viewer>
         </div>
@@ -54,13 +54,15 @@ const PostModal = ({visibile, data,onUpdate,onClose})=>{
 }
 
 const mapStateToProps  = (state,ownProps) =>{
+    console.log(ownProps);
     return {data: state.postData.find((item) => item.id === parseInt(state.modal.id)) }
 }
 
 const mapDispatchToProps = (dispatch,ownProps) =>{
     return {
         onClose: () => dispatch(actionCreators.modalClose(false)),
-        onChange:(value) => dispatch()
+        onTitleChange:(value) => dispatch(actionCreators.changeTitle({id:ownProps.id,title:value})),
+        onBodyChange:(value)=>dispatch(actionCreators.changeBody({id:ownProps.id,body:value})),
     }
 }
 
