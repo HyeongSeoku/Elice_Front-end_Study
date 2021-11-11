@@ -6,12 +6,7 @@ import {
   deletePost,
   updatePost,
 } from "./reducer/post";
-import modal_reducer from "./reducer/modal";
-import * as modalAction from "./action/modalAction";
-
-//modal Action
-const modalOpen = modalAction.modalOpen;
-const modalClose = modalAction.modalClose;
+import { modal_reducer, modalOpen, modalClose } from "./reducer/modal";
 
 //분리된 리듀서 연결
 const reducer = combineReducers({
