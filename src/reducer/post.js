@@ -37,8 +37,14 @@ const post_reducer = createReducer(initialState, {
   [deletePost]: (state, action) =>
     state.filter((data) => data.id !== action.payload),
   // [updatePost]:(state,action) =>
-  [changeTitle]: (state, action) => state.title + action.payload,
-  [changeBody]: (state, action) => state.body + action.payload,
+  [changeTitle]: (state, { payload }) =>
+    state.map((data) =>
+      data.id === payload.id ? { ...data, title: payload.title } : data
+    ),
+  [changeBody]: (state, { payload }) =>
+    state.map((data) =>
+      data.id === payload.id ? { ...data, body: payload.body } : data
+    ),
 });
 
 export {

@@ -5,6 +5,8 @@ import {
   createPost,
   deletePost,
   updatePost,
+  changeTitle,
+  changeBody,
 } from "./reducer/post";
 import { modal_reducer, modalOpen, modalClose } from "./reducer/modal";
 
@@ -22,6 +24,8 @@ export const actionCreators = {
   createPost,
   deletePost,
   updatePost,
+  changeTitle,
+  changeBody,
   modalOpen,
   modalClose,
 };
