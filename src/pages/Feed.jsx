@@ -30,7 +30,7 @@ const PostMain = styled.main`
     align-items: center;
 `
 
-const Feed = ({data,modal}) => {
+const Feed = ({data,modal,id}) => {
 
     return (
         <FeedContainer>    
@@ -45,15 +45,15 @@ const Feed = ({data,modal}) => {
                     </PostList>
                 </FeedContents>
             </PostMain>
-            <PostModal visibile={modal}/>
+            <PostModal visibile={modal?.isOpen} id={modal?.id}/>
         </FeedContainer>
     )
 }
 
 //connect함수에 첫번째 인수로 들어가는 함수 or 객체
 //기본적으로 store가 업데이트가 될때마다 자동적으로 호출이 됨
-const mapStateToProps = (state,ownProps) =>{
-    return {data:state.postData,modal:state.modal.isOpen};
+const mapStateToProps = (state) =>{
+    return {data:state.postData, modal:state.modal};
     
 }
 
