@@ -1,11 +1,13 @@
+import axios from "axios";
+
 const API_ENDPOINT = "https://api.giphy.com/v1/gifs";
 const API_KEY = "3WEg191x1T1T74IgMKgEIA0Q3gWEHqxa";
 
-const fetchApi = async (url) => {
-  const result = await fetch(url);
+const axiosApi = async (url) => {
+  const result = await axios.get(url);
   switch (result.status) {
     case 200:
-      return await result.json();
+      return result;
     case 400:
       console.error("데이터가 없습니다.");
     default:
@@ -15,12 +17,12 @@ const fetchApi = async (url) => {
 
 const api = {
   searchGif: async (keyword) => {
-    return fetchApi(
+    return axiosApi(
       `${API_ENDPOINT}/search?api_key=${API_KEY}&q=${keyword}&limit=25&offset=0&rating=g&lang=en`
     );
   },
   randomGif: async () => {
-    return fetchApi(
+    return axiosApi(
       `${API_ENDPOINT}/trending?api_key=${API_KEY}&limit=25&rating=g`
     );
   },

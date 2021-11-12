@@ -5,6 +5,7 @@ import { actionCreators } from "../store";
 import styled from "styled-components";
 import api from "../apis/giphyApi";
 import HomeCarousel from "../components/HomeCarousel";
+import axios from "axios";
 
 const ContentsMain = styled.div`
   display: flex;
@@ -35,16 +36,16 @@ const CarouselContainer = styled.div`
 const Home = () => {
   const [randomImg, setRandomImg] = useState([]); //홈 화면에 띄우는 용도로만 쓰기 때문에 useState로 선언 (not Redux)
   useEffect(() => {
-    const fetchData = async () => {
+    const getApiData = async () => {
       const response = await api.randomGif();
-      const { data } = response;
+      const { data } = response.data;
       const tempArr = [];
       data.map((item) => {
         tempArr.push(item);
       });
       setRandomImg(tempArr);
     };
-    fetchData();
+    getApiData();
   }, []);
 
   //상태 변경 감지
