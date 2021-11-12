@@ -27,7 +27,8 @@ const CarouselContainer = styled.div`
   overflow: hidden; //공간을 넘어가는 이미지는 보이지 않도록 처리
   &:hover {
     transition: all 0.5s ease-in-out; //부드럽게 움직이도록
-    transform: translateX(-30%);
+
+    transform: translateX(-30%); //[수정 요함] : container 자체가 움직이는 오류
   }
 `;
 
@@ -41,7 +42,6 @@ const Home = () => {
       data.map((item) => {
         tempArr.push(item);
       });
-      //setRandomImg(tempArr);
       setRandomImg(tempArr);
     };
     fetchData();
