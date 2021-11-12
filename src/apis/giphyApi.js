@@ -16,11 +16,13 @@ const fetchApi = async (url) => {
 const api = {
   searchGif: async (keyword) => {
     return fetchApi(
-      `${API_ENDPOINT}/search?api_key=${API_KEY}&q=${keyword}limit=25&offset=0&rating=g&lang=en`
+      `${API_ENDPOINT}/search?api_key=${API_KEY}&q=${keyword}&limit=25&offset=0&rating=g&lang=en`
     );
   },
   randomGif: async () => {
-    return fetchApi(`${API_ENDPOINT}/random?api_key=${API_KEY}&tag=&rating=g`);
+    return fetchApi(
+      `${API_ENDPOINT}/trending?api_key=${API_KEY}&limit=25&rating=g`
+    );
   },
 };
 
