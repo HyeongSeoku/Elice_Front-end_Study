@@ -15,7 +15,7 @@ const EmptyEle = styled.div`
 `
 
 const HeaderTitle = styled.h1 `
-    color:black;
+    color: white;
     flex-grow: 1;
     font-size: 40px;
     margin-left: 20px;
@@ -26,7 +26,7 @@ const HeaderTitle = styled.h1 `
 
 const StyledLink = styled(Link)`
     text-decoration: none;
-    color: black;
+    color: White;
 
     &:focus, &:hover, &:visited, &:link, &:active {
         text-decoration: none;

@@ -61,7 +61,7 @@ const PostUpdate = styled.button`
 `
 
 const PostData = ({ title, body, id, onDeleteBtnClick,onModalOpen }) => {
-
+  console.log(title)
     return (
       <PostLi>
         <PostContainer >
