@@ -17,6 +17,7 @@ const ContentsMain = styled.div`
 
 const HomeMessage = styled.h1`
   color: white;
+  margin-bottom: 20px;
 `;
 
 const CarouselContainer = styled.div`

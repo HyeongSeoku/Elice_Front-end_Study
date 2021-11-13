@@ -50,7 +50,6 @@ const SearchForm = (props) => {
     //검색 api 실행
     console.log(search);
     getApi(search);
-    setSearch("");
   };
 
   const getApi = async (value) => {
