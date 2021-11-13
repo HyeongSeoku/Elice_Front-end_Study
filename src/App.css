@@ -28,6 +28,12 @@
   color: #61dafb;
 }
 
+.fa-search {
+  font-size: 40px;
+  height: 1;
+  vertical-align: middle;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
